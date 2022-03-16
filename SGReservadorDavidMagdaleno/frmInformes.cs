@@ -164,6 +164,7 @@ namespace SGReservadorDavidMagdaleno
                                     re.fecha
                                 };
 
+
                 dgvInformes.DataSource = consulta4.Distinct().ToList();
             }
         }
