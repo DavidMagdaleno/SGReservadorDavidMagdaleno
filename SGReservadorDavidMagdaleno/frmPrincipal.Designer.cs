@@ -82,6 +82,7 @@ namespace SGReservadorDavidMagdaleno
             this.rESERVASToolStripMenuItem.Name = "rESERVASToolStripMenuItem";
             this.rESERVASToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.rESERVASToolStripMenuItem.Text = "RESERVAS";
+            this.rESERVASToolStripMenuItem.Visible = false;
             this.rESERVASToolStripMenuItem.Click += new System.EventHandler(this.rESERVASToolStripMenuItem_Click);
             // 
             // iNFORMESToolStripMenuItem

@@ -61,7 +61,6 @@ namespace SGReservadorDavidMagdaleno
             else
             {
                 dgvReservas.Rows.Clear();
-                //int sumGoles = 0;
                 Au.FillByCod(As.AULAS, codigoaula[cb_aula.SelectedIndex]);
                 DataRow myRow = As.AULAS.Rows[0];
                 if (!myRow["Foto"].ToString().Equals(""))
@@ -70,17 +69,16 @@ namespace SGReservadorDavidMagdaleno
                     MemoryStream stream = new MemoryStream(MyData);
                     pbReservas.Image = Image.FromStream(stream);
                 }
+                if (myRow["Foto"].ToString().Equals("")) {
+                    
+                    pbReservas.Image = null;
+                }
 
-                aux = true;
-                aux3 = false;
-                alaespera();
-            }
-        }
-        private void alaespera() {
-            if (aux && aux2) {
                 btnMostrar.Enabled = true;
+                aux3 = false;
             }
         }
+        
         //private void alaReserva()
         //{
         //    if (aux3)
@@ -91,8 +89,7 @@ namespace SGReservadorDavidMagdaleno
 
         private void dtFecha_ValueChanged(object sender, EventArgs e)
         {
-            aux2 = true;
-            alaespera();
+            
         }
 
         private void btnMostrar_Click(object sender, EventArgs e)

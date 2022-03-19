@@ -12,18 +12,19 @@ namespace SGReservadorDavidMagdaleno
 {
     public partial class frmAulas : Form
     {
+        private bool exist = false;
         public frmAulas()
         {
             InitializeComponent();
         }
-
+        reservadorDataSetTableAdapters.AULASTableAdapter tbres = new reservadorDataSetTableAdapters.AULASTableAdapter();
         private void aULASBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.aULASBindingSource.EndEdit();
             DialogResult resp = new DialogResult();
             resp = MessageBox.Show("Estas seguro de quieres Guardar el Aula", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-            if (resp == DialogResult.Yes)
+            if (resp == DialogResult.Yes && !exist)
             {
                 this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
             }
@@ -66,9 +67,25 @@ namespace SGReservadorDavidMagdaleno
             resp = MessageBox.Show("Estas seguro de quieres eliminar el Aula", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
             if (resp == DialogResult.Yes)
             {
-                reservadorDataSetTableAdapters.AULASTableAdapter tbres = new reservadorDataSetTableAdapters.AULASTableAdapter();
                 tbres.UpdateQueryEliminarAula (-1,cod_aulaTextBox.Text.ToString(), cod_aulaTextBox.Text.ToString());
             }
+        }
+
+        private void cod_aulaTextBox_TextChanged(object sender, EventArgs e)
+        {
+            
+                //MessageBox.Show("wtf");
+                //tbres.FillByCod(this.reservadorDataSet.AULAS, cod_aulaTextBox.Text);
+                //if (this.reservadorDataSet.AULAS.Count > 0)
+                //{
+                //    MessageBox.Show("El aula ya existe");
+                //    exist = true;
+                //}
+                //else
+                //{
+                //    exist = false;
+                //}
+            
         }
     }
 }

@@ -25,10 +25,10 @@ namespace SGReservadorDavidMagdaleno
                 //Recuperamos el objeto de bd, filtrando por el campo categoria
                 //EQUIPOS objSoc = objBD.EQUIPOS.Create();
                 var consulta = from us in objBD.USUARIOS
-                               select us;
+                               select new {us.Login, us.Password, us.Email, us.Perfil, us.Borrado };
 
                 dgvUsers.DataSource = consulta.ToList();
-                //dgvAdmin.Columns[0].Visible = false;
+                dgvUsers.Columns[4].Visible = false;
             }
         }
 
@@ -36,12 +36,22 @@ namespace SGReservadorDavidMagdaleno
         {
             frmInsertUser u = new frmInsertUser();
             u.ShowDialog();
+            DialogResult dres = u.ShowDialog();
+            if (dres == DialogResult.Cancel)
+            {
+                cargarusuarios();
+            }
         }
 
         private void btnMod_Click(object sender, EventArgs e)
         {
             frmModUser m = new frmModUser(dgvUsers.SelectedRows[0].Cells[0].Value.ToString(), dgvUsers.SelectedRows[0].Cells[1].Value.ToString(), dgvUsers.SelectedRows[0].Cells[2].Value.ToString(),int.Parse(dgvUsers.SelectedRows[0].Cells[3].Value.ToString()),int.Parse(dgvUsers.SelectedRows[0].Cells[4].Value.ToString()));
             m.ShowDialog();
+            DialogResult dres = m.ShowDialog();
+            if (dres == DialogResult.Cancel)
+            {
+                cargarusuarios();
+            }
         }
 
         private void btnElim_Click(object sender, EventArgs e)

@@ -13,14 +13,20 @@ namespace SGReservadorDavidMagdaleno
     public partial class frmPrincipal : Form
     {
         private String usuariologin="";
-        public frmPrincipal(int r, string s)
+        private Form1 log;
+        public frmPrincipal(int r, string s , Form1 f)
         {
             InitializeComponent();
+            log = f;
             if (r==2)
             {
                 usuariosToolStripMenuItem.Visible = true;
                 aulasToolStripMenuItem.Visible = true;
                 iNFORMESToolStripMenuItem.Visible = true;
+            }
+            if (r == 1)
+            {
+                rESERVASToolStripMenuItem.Visible = true;
             }
             usuariologin = s;
             
@@ -28,6 +34,7 @@ namespace SGReservadorDavidMagdaleno
 
         private void sALIRToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            log.Visible = true;
             this.Close();
         }
 

@@ -61,6 +61,7 @@ namespace SGReservadorDavidMagdaleno
             // 
             // cb_aula
             // 
+            this.cb_aula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_aula.FormattingEnabled = true;
             this.cb_aula.Location = new System.Drawing.Point(85, 35);
             this.cb_aula.Name = "cb_aula";
@@ -90,6 +91,9 @@ namespace SGReservadorDavidMagdaleno
             // 
             // dgvReservas
             // 
+            this.dgvReservas.AllowUserToAddRows = false;
+            this.dgvReservas.AllowUserToDeleteRows = false;
+            this.dgvReservas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReservas.Location = new System.Drawing.Point(12, 286);
             this.dgvReservas.Name = "dgvReservas";
