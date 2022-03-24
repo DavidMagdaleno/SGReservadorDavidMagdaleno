@@ -34,10 +34,6 @@ namespace SGReservadorDavidMagdaleno
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label fotoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAulas));
-            this.reservadorDataSet = new SGReservadorDavidMagdaleno.reservadorDataSet();
-            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.aULASTableAdapter = new SGReservadorDavidMagdaleno.reservadorDataSetTableAdapters.AULASTableAdapter();
-            this.tableAdapterManager = new SGReservadorDavidMagdaleno.reservadorDataSetTableAdapters.TableAdapterManager();
             this.aULASBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -56,14 +52,18 @@ namespace SGReservadorDavidMagdaleno
             this.fotoPictureBox = new System.Windows.Forms.PictureBox();
             this.btnFoto = new System.Windows.Forms.Button();
             this.ofdFoto = new System.Windows.Forms.OpenFileDialog();
+            this.aULASBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reservadorDataSet = new SGReservadorDavidMagdaleno.reservadorDataSet();
+            this.aULASTableAdapter = new SGReservadorDavidMagdaleno.reservadorDataSetTableAdapters.AULASTableAdapter();
+            this.tableAdapterManager = new SGReservadorDavidMagdaleno.reservadorDataSetTableAdapters.TableAdapterManager();
             cod_aulaLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             fotoLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aULASBindingNavigator)).BeginInit();
             this.aULASBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // cod_aulaLabel
@@ -93,29 +93,6 @@ namespace SGReservadorDavidMagdaleno
             fotoLabel.Size = new System.Drawing.Size(31, 13);
             fotoLabel.TabIndex = 5;
             fotoLabel.Text = "Foto:";
-            // 
-            // reservadorDataSet
-            // 
-            this.reservadorDataSet.DataSetName = "reservadorDataSet";
-            this.reservadorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // aULASBindingSource
-            // 
-            this.aULASBindingSource.DataMember = "AULAS";
-            this.aULASBindingSource.DataSource = this.reservadorDataSet;
-            // 
-            // aULASTableAdapter
-            // 
-            this.aULASTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.AULASTableAdapter = this.aULASTableAdapter;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.PERFILESTableAdapter = null;
-            this.tableAdapterManager.RESERVASTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = SGReservadorDavidMagdaleno.reservadorDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USUARIOSTableAdapter = null;
             // 
             // aULASBindingNavigator
             // 
@@ -284,6 +261,29 @@ namespace SGReservadorDavidMagdaleno
             // 
             this.ofdFoto.FileName = "openFileDialog1";
             // 
+            // aULASBindingSource
+            // 
+            this.aULASBindingSource.DataMember = "AULAS";
+            this.aULASBindingSource.DataSource = this.reservadorDataSet;
+            // 
+            // reservadorDataSet
+            // 
+            this.reservadorDataSet.DataSetName = "reservadorDataSet";
+            this.reservadorDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // aULASTableAdapter
+            // 
+            this.aULASTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.AULASTableAdapter = this.aULASTableAdapter;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.PERFILESTableAdapter = null;
+            this.tableAdapterManager.RESERVASTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = SGReservadorDavidMagdaleno.reservadorDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOSTableAdapter = null;
+            // 
             // frmAulas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,12 +301,12 @@ namespace SGReservadorDavidMagdaleno
             this.Name = "frmAulas";
             this.Text = "frmAulas";
             this.Load += new System.EventHandler(this.frmAulas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aULASBindingNavigator)).EndInit();
             this.aULASBindingNavigator.ResumeLayout(false);
             this.aULASBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aULASBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reservadorDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

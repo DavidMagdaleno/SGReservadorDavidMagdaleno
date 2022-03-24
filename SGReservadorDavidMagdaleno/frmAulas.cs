@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,7 @@ namespace SGReservadorDavidMagdaleno
 
         private void frmAulas_Load(object sender, EventArgs e)
         {
+            
             //this.aULASTableAdapter.Fill(this.reservadorDataSet.AULAS);
             this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS,0);
 
