@@ -21,14 +21,28 @@ namespace SGReservadorDavidMagdaleno
         reservadorDataSetTableAdapters.AULASTableAdapter tbres = new reservadorDataSetTableAdapters.AULASTableAdapter();
         private void aULASBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.aULASBindingSource.EndEdit();
-            DialogResult resp = new DialogResult();
-            resp = MessageBox.Show("Estas seguro de quieres Guardar el Aula", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-            if (resp == DialogResult.Yes && !exist)
-            {
-                this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+            try {
+                this.Validate();
+                this.aULASBindingSource.EndEdit();
+                DialogResult resp = new DialogResult();
+                resp = MessageBox.Show("Estas seguro de quieres Guardar el Aula", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                if (resp == DialogResult.Yes && !exist)
+                {
+                    this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+                }
             }
+            catch (Exception x)
+            {
+                if (descripcionTextBox.Text.Equals(""))
+                {
+                    MessageBox.Show("Campos en blanco");
+                }
+                else {
+                    MessageBox.Show("Ese Codigo de Aula ya existe");
+                }
+            }
+            
+            
         }
 
         private void frmAulas_Load(object sender, EventArgs e)
@@ -73,21 +87,6 @@ namespace SGReservadorDavidMagdaleno
             }
         }
 
-        private void cod_aulaTextBox_TextChanged(object sender, EventArgs e)
-        {
-            
-                //MessageBox.Show("wtf");
-                //tbres.FillByCod(this.reservadorDataSet.AULAS, cod_aulaTextBox.Text);
-                //if (this.reservadorDataSet.AULAS.Count > 0)
-                //{
-                //    MessageBox.Show("El aula ya existe");
-                //    exist = true;
-                //}
-                //else
-                //{
-                //    exist = false;
-                //}
-            
-        }
+        
     }
 }

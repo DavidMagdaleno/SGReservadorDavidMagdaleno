@@ -227,7 +227,7 @@ namespace SGReservadorDavidMagdaleno
             this.cod_aulaTextBox.Name = "cod_aulaTextBox";
             this.cod_aulaTextBox.Size = new System.Drawing.Size(100, 20);
             this.cod_aulaTextBox.TabIndex = 2;
-            this.cod_aulaTextBox.TextChanged += new System.EventHandler(this.cod_aulaTextBox_TextChanged);
+            
             // 
             // descripcionTextBox
             // 
