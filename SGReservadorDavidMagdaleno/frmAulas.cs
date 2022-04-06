@@ -83,7 +83,23 @@ namespace SGReservadorDavidMagdaleno
             resp = MessageBox.Show("Estas seguro de quieres eliminar el Aula", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
             if (resp == DialogResult.Yes)
             {
-                tbres.UpdateQueryEliminarAula (-1,cod_aulaTextBox.Text.ToString(), cod_aulaTextBox.Text.ToString());
+                tbres.FillByCod(this.reservadorDataSet.AULAS, cod_aulaTextBox.Text.ToString());
+                if (this.reservadorDataSet.AULAS.Count > 0)
+                {
+                    tbres.FillByCodActivo(this.reservadorDataSet.AULAS, cod_aulaTextBox.Text.ToString(), 0);
+                    if (this.reservadorDataSet.AULAS.Count > 0)
+                    {
+                        tbres.UpdateQueryEliminarAula(-1, cod_aulaTextBox.Text.ToString(), cod_aulaTextBox.Text.ToString());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ese aula ya existe en la BD");
+                    }
+                }
+                else {
+                    MessageBox.Show("Ese aula no existe en la BD");
+                }
+                this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS, 0);
             }
         }
 

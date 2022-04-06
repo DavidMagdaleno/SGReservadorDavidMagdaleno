@@ -98,6 +98,7 @@ namespace SGReservadorDavidMagdaleno
             // 
             // btnSal
             // 
+            this.btnSal.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSal.Location = new System.Drawing.Point(220, 181);
             this.btnSal.Name = "btnSal";
             this.btnSal.Size = new System.Drawing.Size(75, 23);
@@ -117,8 +118,10 @@ namespace SGReservadorDavidMagdaleno
             // 
             // Form1
             // 
+            this.AcceptButton = this.btnEn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnSal;
             this.ClientSize = new System.Drawing.Size(369, 230);
             this.Controls.Add(this.dgvaux);
             this.Controls.Add(this.btnSal);

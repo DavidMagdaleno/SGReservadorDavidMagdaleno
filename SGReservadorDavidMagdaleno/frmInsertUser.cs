@@ -65,27 +65,49 @@ namespace SGReservadorDavidMagdaleno
                 else {
                     objUser = objBD.USUARIOS.Create();
 
-                    objUser.Login = txtLog.Text;
-                    objUser.Password = txtPW.Text;
-                    objUser.Email = txtEmail.Text;
+                    if (!txtLog.Text.Equals(""))
+                    {
+                        objUser.Login = txtLog.Text;
+                        if (!txtPW.Text.Equals(""))
+                        {
+                            objUser.Password = txtPW.Text;
+                            if (!txtEmail.Text.Equals(""))
+                            {
+                                objUser.Email = txtEmail.Text;
+                                if (cbPerfil.SelectedIndex != -1)
+                                {
+                                    var consulta = from pr in objBD.PERFILES
+                                                   where pr.Descripcion == cbPerfil.SelectedItem.ToString()
+                                                   select pr.Id_Perfil;
 
-                    var consulta = from pr in objBD.PERFILES
-                                   where pr.Descripcion == cbPerfil.SelectedItem.ToString()
-                                   select pr.Id_Perfil;
+                                    var n = consulta.ToList();
+                                    var t = n.FirstOrDefault();
 
-                    var n = consulta.ToList();
-                    var t = n.FirstOrDefault();
-
-                    objUser.Perfil = t;
-                    objUser.Borrado = 0;
-                    //se guardan los cambios
-                    objBD.USUARIOS.Add(objUser);
-                    objBD.SaveChanges();
-
-                    //Renovar DataGridView---------------------------------------------------------------
-
-                    MessageBox.Show("Añadido");
-
+                                    objUser.Perfil = t;
+                                    objUser.Borrado = 0;
+                                    //se guardan los cambios
+                                    objBD.USUARIOS.Add(objUser);
+                                    objBD.SaveChanges();
+                                    MessageBox.Show("Añadido");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("ERROR, Campo perfil en blanco");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("ERROR, Campo email en blanco");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERROR, Campo password en blanco");
+                        }
+                    }
+                    else {
+                        MessageBox.Show("ERROR, Campo login en blanco");
+                    }
                 }
             }
         }

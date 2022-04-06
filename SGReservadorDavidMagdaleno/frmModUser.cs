@@ -86,31 +86,38 @@ namespace SGReservadorDavidMagdaleno
 
                 if (objUser != null)
                 {
-                    if (!txtEmailMod.Text.Equals("") || !txtPWMod.Text.Equals("") || txtPWMod.Text.Length < 10 || cbPerfilMod.SelectedIndex != -1)
+                    //objUser.Login = txtLogMod.Text;
+                    if (txtPWMod.Text.Length < 10 && !txtPWMod.Text.Equals(""))
                     {
-                        //objUser.Login = txtLogMod.Text;
                         objUser.Password = txtPWMod.Text;
-                        objUser.Email = txtEmailMod.Text;
 
-                        var consulta = from pr in objBD.PERFILES
-                                       where pr.Descripcion == cbPerfilMod.SelectedItem.ToString()
-                                       select pr.Id_Perfil;
+                        if (!txtEmailMod.Text.Equals(""))
+                        {
+                            objUser.Email = txtEmailMod.Text;
 
-                        var n = consulta.ToList();
-                        var t = n.First();
+                            var consulta = from pr in objBD.PERFILES
+                                           where pr.Descripcion == cbPerfilMod.SelectedItem.ToString()
+                                           select pr.Id_Perfil;
 
-                        objUser.Perfil = t;
-                        objUser.Borrado = 0;
+                            var n = consulta.ToList();
+                            var t = n.First();
 
-                        //se guardan los cambios
-                        //objBD.USUARIOS.Add(objUser); //solo para insertar
-                        objBD.SaveChanges();
+                            objUser.Perfil = t;
+                            objUser.Borrado = 0;
 
-
-                        MessageBox.Show("Modificado");
+                            //se guardan los cambios
+                            //objBD.USUARIOS.Add(objUser); //solo para insertar
+                            objBD.SaveChanges();
+                            MessageBox.Show("Modificado");
+                        }
+                        else
+                        {
+                            MessageBox.Show("El campo email esta en blanco");
+                        }
                     }
-                    else {
-                        MessageBox.Show("Hay campos en blanco y la contraseña no puede ser mayor a 10 caracteres");
+                    else
+                    {
+                        MessageBox.Show("La contraseña no puede ser mayor a 10 caracteres o estar en blanco");
                     }
                 }
                 else

@@ -47,6 +47,8 @@ namespace SGReservadorDavidMagdaleno
             this.dgvUsers.Size = new System.Drawing.Size(539, 164);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
+            this.dgvUsers.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsers_CellMouseClick);
+            this.dgvUsers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsers_CellMouseDoubleClick);
             // 
             // btnInser
             // 

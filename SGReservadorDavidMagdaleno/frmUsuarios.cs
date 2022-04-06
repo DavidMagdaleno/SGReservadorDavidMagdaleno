@@ -22,20 +22,21 @@ namespace SGReservadorDavidMagdaleno
         {
             using (reservadorEntities objBD = new reservadorEntities())
             {
-                //Recuperamos el objeto de bd, filtrando por el campo categoria
-                //EQUIPOS objSoc = objBD.EQUIPOS.Create();
                 var consulta = from us in objBD.USUARIOS
-                               select new {us.Login, us.Password, us.Email, us.Perfil, us.Borrado };
-
+                               from pr in objBD.PERFILES
+                               where us.Perfil == pr.Id_Perfil && us.Borrado == 0
+                               select new { us.Login, us.Password, us.Email, pr.Descripcion, us.Borrado, us.Perfil };
+             
                 dgvUsers.DataSource = consulta.ToList();
                 dgvUsers.Columns[4].Visible = false;
+                dgvUsers.Columns[5].Visible = false;
             }
         }
 
         private void btnInser_Click(object sender, EventArgs e)
         {
             frmInsertUser u = new frmInsertUser();
-            u.ShowDialog();
+            //u.ShowDialog();
             DialogResult dres = u.ShowDialog();
             if (dres == DialogResult.Cancel)
             {
@@ -45,8 +46,8 @@ namespace SGReservadorDavidMagdaleno
 
         private void btnMod_Click(object sender, EventArgs e)
         {
-            frmModUser m = new frmModUser(dgvUsers.SelectedRows[0].Cells[0].Value.ToString(), dgvUsers.SelectedRows[0].Cells[1].Value.ToString(), dgvUsers.SelectedRows[0].Cells[2].Value.ToString(),int.Parse(dgvUsers.SelectedRows[0].Cells[3].Value.ToString()),int.Parse(dgvUsers.SelectedRows[0].Cells[4].Value.ToString()));
-            m.ShowDialog();
+            frmModUser m = new frmModUser(dgvUsers.SelectedRows[0].Cells[0].Value.ToString(), dgvUsers.SelectedRows[0].Cells[1].Value.ToString(), dgvUsers.SelectedRows[0].Cells[2].Value.ToString(),int.Parse(dgvUsers.SelectedRows[0].Cells[5].Value.ToString()),int.Parse(dgvUsers.SelectedRows[0].Cells[4].Value.ToString()));
+            //m.ShowDialog();
             DialogResult dres = m.ShowDialog();
             if (dres == DialogResult.Cancel)
             {
@@ -91,17 +92,34 @@ namespace SGReservadorDavidMagdaleno
                 var consulta = from us in objBD.USUARIOS
                                from pr in objBD.PERFILES
                                where us.Perfil==pr.Id_Perfil && us.Borrado==0
-                               select new { us.Login,us.Password, us.Email, pr.Descripcion,us.Borrado};
+                               select new { us.Login,us.Password, us.Email, pr.Descripcion,us.Borrado, us.Perfil};
 
                 dgvUsers.DataSource = consulta.ToList();
-                //dgvAdmin.Columns[0].Visible = false;
+                dgvUsers.Columns[4].Visible = false;
+                dgvUsers.Columns[5].Visible = false;
             }
         }
 
         private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmModUser m = new frmModUser(dgvUsers.SelectedRows[0].Cells[0].Value.ToString(), dgvUsers.SelectedRows[0].Cells[1].Value.ToString(), dgvUsers.SelectedRows[0].Cells[2].Value.ToString(), int.Parse(dgvUsers.SelectedRows[0].Cells[3].Value.ToString()), int.Parse(dgvUsers.SelectedRows[0].Cells[4].Value.ToString()));
-            m.ShowDialog();
+            //frmModUser m = new frmModUser(dgvUsers.SelectedRows[0].Cells[0].Value.ToString(), dgvUsers.SelectedRows[0].Cells[1].Value.ToString(), dgvUsers.SelectedRows[0].Cells[2].Value.ToString(), int.Parse(dgvUsers.SelectedRows[0].Cells[3].Value.ToString()), int.Parse(dgvUsers.SelectedRows[0].Cells[4].Value.ToString()));
+            //m.ShowDialog();
+        }
+
+        private void dgvUsers_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void dgvUsers_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            frmModUser m = new frmModUser(dgvUsers.SelectedRows[0].Cells[0].Value.ToString(), dgvUsers.SelectedRows[0].Cells[1].Value.ToString(), dgvUsers.SelectedRows[0].Cells[2].Value.ToString(), int.Parse(dgvUsers.SelectedRows[0].Cells[5].Value.ToString()), int.Parse(dgvUsers.SelectedRows[0].Cells[4].Value.ToString()));
+            //m.ShowDialog();
+            DialogResult dres = m.ShowDialog();
+            if (dres == DialogResult.Cancel)
+            {
+                cargarusuarios();
+            }
         }
     }
 }
