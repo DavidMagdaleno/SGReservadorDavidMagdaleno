@@ -58,7 +58,6 @@ namespace SGReservadorDavidMagdaleno
                             if (d.Count > 0)
                             {
                                 dgvaux.DataSource = r;
-                                if (dgvaux.Rows[0].Cells[0].Value.ToString() != txtUser.Text) { }
                                 frmPrincipal p = new frmPrincipal(int.Parse(dgvaux.Rows[0].Cells[3].Value.ToString()), dgvaux.Rows[0].Cells[0].Value.ToString(), this);
                                 p.Show();
                                 this.Hide();

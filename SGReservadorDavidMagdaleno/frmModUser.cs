@@ -23,10 +23,6 @@ namespace SGReservadorDavidMagdaleno
             per = Perfil;
             log = login;
             cargarPerfil();
-            
-            
-            
-
         }
 
         public void cargarPerfil()
@@ -63,8 +59,6 @@ namespace SGReservadorDavidMagdaleno
                 var consulta2 = from pr in objBD.PERFILES
                                 where pr.Id_Perfil == per
                                 select pr.Descripcion;
-
-               
                 var p = consulta2.ToList();
                 var s = p.FirstOrDefault();
                 

@@ -25,7 +25,7 @@ namespace SGReservadorDavidMagdaleno
                 this.Validate();
                 this.aULASBindingSource.EndEdit();
                 DialogResult resp = new DialogResult();
-                resp = MessageBox.Show("Estas seguro de quieres Guardar el Aula", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+                resp = MessageBox.Show("Estas seguro de quieres Guardar el Aula", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                 if (resp == DialogResult.Yes && !exist)
                 {
                     this.tableAdapterManager.UpdateAll(this.reservadorDataSet);

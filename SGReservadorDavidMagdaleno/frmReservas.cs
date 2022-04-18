@@ -38,7 +38,7 @@ namespace SGReservadorDavidMagdaleno
         public void cargarAulas()
         {
             //cb_aula.Items.Add("Selecciona Aula");
-            Au.Fill(As.AULAS);
+            Au.FillByActivas(As.AULAS,0);
             for (int i = 0; i < As.AULAS.Count; i++)
             {
                 cb_aula.Items.Add(As.AULAS[i].Descripcion);
@@ -91,19 +91,21 @@ namespace SGReservadorDavidMagdaleno
         {
             
         }
-
+        bool p = true;
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             btnReservar.Enabled = true;
             dgvReservas.Rows.Clear();
             //bool aux = false;
             //R.FillByAula(dsR.RESERVAS, codigoaula[cb_aula.SelectedIndex], dtFecha.Value.ToString());
-            dgvReservas.Columns.Add("Aula", "Aula");
-            dgvReservas.Columns.Add("Usuario", "Usuario");
-            dgvReservas.Columns.Add("Hora", "Hora");
-            dgvReservas.Columns.Add("Libre", "Libre");
-            dgvReservas.Columns.Add("Id", "Id");
-
+            if (p) {
+                dgvReservas.Columns.Add("Aula", "Aula");
+                dgvReservas.Columns.Add("Usuario", "Usuario");
+                dgvReservas.Columns.Add("Hora", "Hora");
+                dgvReservas.Columns.Add("Libre", "Libre");
+                dgvReservas.Columns.Add("Id", "Id");
+                p = false;
+            }
             verReservas();
             dgvReservas.Columns[4].Visible = false; 
         }
