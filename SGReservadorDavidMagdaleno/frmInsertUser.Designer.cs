@@ -144,6 +144,7 @@ namespace SGReservadorDavidMagdaleno
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInsertUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInsertUser";
             this.ResumeLayout(false);
             this.PerformLayout();

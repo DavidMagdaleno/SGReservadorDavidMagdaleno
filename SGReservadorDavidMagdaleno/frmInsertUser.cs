@@ -65,13 +65,13 @@ namespace SGReservadorDavidMagdaleno
                 else {
                     objUser = objBD.USUARIOS.Create();
 
-                    if (!txtLog.Text.Equals(""))
+                    if (!txtLog.Text.Trim().Equals(""))
                     {
                         objUser.Login = txtLog.Text;
-                        if (!txtPW.Text.Equals(""))
+                        if (!txtPW.Text.Trim().Equals(""))
                         {
                             objUser.Password = txtPW.Text;
-                            if (!txtEmail.Text.Equals(""))
+                            if (!txtEmail.Text.Trim().Equals(""))
                             {
                                 objUser.Email = txtEmail.Text;
                                 if (cbPerfil.SelectedIndex != -1)
@@ -89,6 +89,7 @@ namespace SGReservadorDavidMagdaleno
                                     objBD.USUARIOS.Add(objUser);
                                     objBD.SaveChanges();
                                     MessageBox.Show("Añadido");
+                                    this.Close();
                                 }
                                 else
                                 {

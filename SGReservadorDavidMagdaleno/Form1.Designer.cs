@@ -110,7 +110,7 @@ namespace SGReservadorDavidMagdaleno
             // dgvaux
             // 
             this.dgvaux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvaux.Location = new System.Drawing.Point(-1, 212);
+            this.dgvaux.Location = new System.Drawing.Point(-5, 225);
             this.dgvaux.Name = "dgvaux";
             this.dgvaux.Size = new System.Drawing.Size(10, 10);
             this.dgvaux.TabIndex = 7;

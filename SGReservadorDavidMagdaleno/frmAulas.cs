@@ -28,7 +28,14 @@ namespace SGReservadorDavidMagdaleno
                 resp = MessageBox.Show("Estas seguro de quieres Guardar el Aula", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                 if (resp == DialogResult.Yes && !exist)
                 {
-                    this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+                    if (!cod_aulaTextBox.Text.Trim().Equals("") && !descripcionTextBox.Text.Trim().Equals(""))
+                    {
+                        this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
+                        bindingNavigatorAddNewItem.Enabled = true;
+                    }
+                    else {
+                        MessageBox.Show("No se permiten espacios en blanco");
+                    }
                 }
             }
             catch (Exception x)
@@ -40,6 +47,7 @@ namespace SGReservadorDavidMagdaleno
                 else {
                     MessageBox.Show("Ese Codigo de Aula ya existe");
                     this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS, 0);
+                    bindingNavigatorAddNewItem.Enabled = true;
                 }
             }
             
@@ -80,6 +88,7 @@ namespace SGReservadorDavidMagdaleno
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
+            bindingNavigatorAddNewItem.Enabled = true;
             DialogResult resp = new DialogResult();
             resp = MessageBox.Show("Estas seguro de quieres eliminar el Aula", "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
             if (resp == DialogResult.Yes)
@@ -104,6 +113,11 @@ namespace SGReservadorDavidMagdaleno
             }
         }
 
-        
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            bindingNavigatorMovePreviousItem.Enabled = false;
+            bindingNavigatorMoveFirstItem.Enabled = false;
+            bindingNavigatorAddNewItem.Enabled = false;
+        }
     }
 }

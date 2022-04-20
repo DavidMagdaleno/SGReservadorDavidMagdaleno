@@ -126,7 +126,7 @@ namespace SGReservadorDavidMagdaleno
         {
             if (this.MdiChildren.Length > 0)
             {
-                if (MdiChildren[0].Name != "frmUsuarios")
+                if (MdiChildren[0].Name != "frmInformes")
                 {
                     DialogResult rs = MessageBox.Show("¿ Deseas cerrar las " + MdiChildren[0].Name + "?", "!ATENCION¡", MessageBoxButtons.YesNo);
                     if (rs == DialogResult.Yes)

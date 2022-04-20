@@ -81,11 +81,10 @@ namespace SGReservadorDavidMagdaleno
                 if (objUser != null)
                 {
                     //objUser.Login = txtLogMod.Text;
-                    if (txtPWMod.Text.Length < 10 && !txtPWMod.Text.Equals(""))
+                    if (txtPWMod.Text.Length < 10 && !txtPWMod.Text.Trim().Equals(""))
                     {
                         objUser.Password = txtPWMod.Text;
-
-                        if (!txtEmailMod.Text.Equals(""))
+                        if (!txtEmailMod.Text.Trim().Equals(""))
                         {
                             objUser.Email = txtEmailMod.Text;
 
@@ -103,6 +102,7 @@ namespace SGReservadorDavidMagdaleno
                             //objBD.USUARIOS.Add(objUser); //solo para insertar
                             objBD.SaveChanges();
                             MessageBox.Show("Modificado");
+                            this.Close();
                         }
                         else
                         {

@@ -118,6 +118,7 @@ namespace SGReservadorDavidMagdaleno
             // 
             this.dtFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFecha.Location = new System.Drawing.Point(317, 36);
+            this.dtFecha.MinDate = new System.DateTime(2022, 4, 20, 0, 0, 0, 0);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(159, 20);
             this.dtFecha.TabIndex = 8;

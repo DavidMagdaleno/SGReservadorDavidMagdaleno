@@ -40,9 +40,14 @@ namespace SGReservadorDavidMagdaleno
             // 
             // dgvInformes
             // 
+            this.dgvInformes.AllowUserToAddRows = false;
+            this.dgvInformes.AllowUserToDeleteRows = false;
+            this.dgvInformes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInformes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInformes.Location = new System.Drawing.Point(12, 100);
+            this.dgvInformes.MultiSelect = false;
             this.dgvInformes.Name = "dgvInformes";
+            this.dgvInformes.ReadOnly = true;
             this.dgvInformes.Size = new System.Drawing.Size(449, 338);
             this.dgvInformes.TabIndex = 0;
             // 
