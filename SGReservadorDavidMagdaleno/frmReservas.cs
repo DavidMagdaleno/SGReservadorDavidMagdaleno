@@ -19,6 +19,7 @@ namespace SGReservadorDavidMagdaleno
             InitializeComponent();
             cargarAulas();
             user = s;
+            dtFecha.MinDate = DateTime.Today;
         }
         bool aux = false;
         bool aux2 = false;

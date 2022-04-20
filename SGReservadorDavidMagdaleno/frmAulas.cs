@@ -22,19 +22,22 @@ namespace SGReservadorDavidMagdaleno
         private void aULASBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             try {
-                this.Validate();
-                this.aULASBindingSource.EndEdit();
                 DialogResult resp = new DialogResult();
                 resp = MessageBox.Show("Estas seguro de quieres Guardar el Aula", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
                 if (resp == DialogResult.Yes && !exist)
                 {
                     if (!cod_aulaTextBox.Text.Trim().Equals("") && !descripcionTextBox.Text.Trim().Equals(""))
                     {
+                        cod_aulaTextBox.Text = cod_aulaTextBox.Text.Trim();
+                        descripcionTextBox.Text = descripcionTextBox.Text.Trim();
+                        this.Validate();
+                        this.aULASBindingSource.EndEdit();
                         this.tableAdapterManager.UpdateAll(this.reservadorDataSet);
                         bindingNavigatorAddNewItem.Enabled = true;
                     }
                     else {
                         MessageBox.Show("No se permiten espacios en blanco");
+                        this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS, 0);
                     }
                 }
             }
@@ -43,6 +46,7 @@ namespace SGReservadorDavidMagdaleno
                 if (descripcionTextBox.Text.Equals(""))
                 {
                     MessageBox.Show("Campos en blanco");
+                    this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS, 0);
                 }
                 else {
                     MessageBox.Show("Ese Codigo de Aula ya existe");

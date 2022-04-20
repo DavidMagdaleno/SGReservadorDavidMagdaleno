@@ -81,12 +81,12 @@ namespace SGReservadorDavidMagdaleno
                 if (objUser != null)
                 {
                     //objUser.Login = txtLogMod.Text;
-                    if (txtPWMod.Text.Length < 10 && !txtPWMod.Text.Trim().Equals(""))
+                    if (txtPWMod.Text.Trim().Length < 10 && !txtPWMod.Text.Trim().Equals(""))
                     {
-                        objUser.Password = txtPWMod.Text;
+                        objUser.Password = txtPWMod.Text.Trim();
                         if (!txtEmailMod.Text.Trim().Equals(""))
                         {
-                            objUser.Email = txtEmailMod.Text;
+                            objUser.Email = txtEmailMod.Text.Trim();
 
                             var consulta = from pr in objBD.PERFILES
                                            where pr.Descripcion == cbPerfilMod.SelectedItem.ToString()

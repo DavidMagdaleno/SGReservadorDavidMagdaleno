@@ -67,13 +67,13 @@ namespace SGReservadorDavidMagdaleno
 
                     if (!txtLog.Text.Trim().Equals(""))
                     {
-                        objUser.Login = txtLog.Text;
+                        objUser.Login = txtLog.Text.Trim();
                         if (!txtPW.Text.Trim().Equals(""))
                         {
-                            objUser.Password = txtPW.Text;
+                            objUser.Password = txtPW.Text.Trim();
                             if (!txtEmail.Text.Trim().Equals(""))
                             {
-                                objUser.Email = txtEmail.Text;
+                                objUser.Email = txtEmail.Text.Trim();
                                 if (cbPerfil.SelectedIndex != -1)
                                 {
                                     var consulta = from pr in objBD.PERFILES
