@@ -63,6 +63,7 @@ namespace SGReservadorDavidMagdaleno
             // 
             // cbPerfilMod
             // 
+            this.cbPerfilMod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPerfilMod.FormattingEnabled = true;
             this.cbPerfilMod.Location = new System.Drawing.Point(179, 134);
             this.cbPerfilMod.Name = "cbPerfilMod";
@@ -142,6 +143,7 @@ namespace SGReservadorDavidMagdaleno
             this.Controls.Add(this.txtPWMod);
             this.Controls.Add(this.txtLogMod);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmModUser";
             this.Text = "frmModUser";
             this.ResumeLayout(false);

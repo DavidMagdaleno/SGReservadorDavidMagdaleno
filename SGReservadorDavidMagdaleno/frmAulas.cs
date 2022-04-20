@@ -39,6 +39,7 @@ namespace SGReservadorDavidMagdaleno
                 }
                 else {
                     MessageBox.Show("Ese Codigo de Aula ya existe");
+                    this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS, 0);
                 }
             }
             

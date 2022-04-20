@@ -100,6 +100,7 @@ namespace SGReservadorDavidMagdaleno
             // 
             // cbPerfil
             // 
+            this.cbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPerfil.FormattingEnabled = true;
             this.cbPerfil.Location = new System.Drawing.Point(118, 158);
             this.cbPerfil.Name = "cbPerfil";
@@ -141,6 +142,7 @@ namespace SGReservadorDavidMagdaleno
             this.Controls.Add(this.txtPW);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInsertUser";
             this.Text = "frmInsertUser";
             this.ResumeLayout(false);

@@ -27,6 +27,7 @@ namespace SGReservadorDavidMagdaleno
             if (r == 1)
             {
                 rESERVASToolStripMenuItem.Visible = true;
+                aDMINISTRARToolStripMenuItem.Visible = false;
             }
             usuariologin = s;
             
