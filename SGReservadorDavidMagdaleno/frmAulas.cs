@@ -38,6 +38,7 @@ namespace SGReservadorDavidMagdaleno
                     else {
                         MessageBox.Show("No se permiten espacios en blanco");
                         this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS, 0);
+                        bindingNavigatorAddNewItem.Enabled = true;
                     }
                 }
             }
@@ -47,6 +48,7 @@ namespace SGReservadorDavidMagdaleno
                 {
                     MessageBox.Show("Campos en blanco");
                     this.aULASTableAdapter.FillByActivas(this.reservadorDataSet.AULAS, 0);
+                    bindingNavigatorAddNewItem.Enabled = true;
                 }
                 else {
                     MessageBox.Show("Ese Codigo de Aula ya existe");
